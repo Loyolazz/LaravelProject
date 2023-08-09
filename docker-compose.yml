@@ -11,6 +11,11 @@ services:
     volumes:
       - ./:/var/www
       - ./application:/var/www/application
+    environment:
+      - COMPOSER_HOME=/composer
+      - COMPOSER_ALLOW_SUPERUSER=1
+      - APP_ENV=local
+      - APP_KEY=base64:DiUApfzsjFRJiRfyjmW+2dY0VdQhWgn05a7s/91EMzs=
     depends_on:
       - db
       - redis
