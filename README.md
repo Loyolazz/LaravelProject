@@ -8,40 +8,45 @@ Este é um projeto Laravel de aprendizado e para ser executado usando Docker.
 
 Certifique-se de ter as permissões necessárias para editar a pasta do projeto. Use o seguinte comando para ajustar as permissões:
 
-``bash
+```bash
 sudo chown -R "seu-usuario":"seu-usuario" application
+```
 
 ## Configuração do Laravel
 
 ### Subir o Ambiente Docker:
 Execute o seguinte comando para iniciar os contêineres do projeto:
 
-``bash
+```bash
 sudo docker-compose up
+```
 
 ### Iniciar o Projeto Laravel:
 Execute o seguinte comando para iniciar novo projeto Laravel chamado "application" usando o Composer:
 
-``bash
+```bash
 sudo docker-compose exec app bash
+```
 
 ### Instalar as Dependências:
 Com o projeto Laravel iniciado, instale as dependências:
 
-``bash
+```bash
 composer install
+```
 
 ### Configurando o Arquivo .env:
 O arquivo .env contém as configurações de ambiente para o seu projeto. Você pode criar uma cópia do arquivo de exemplo .env.example e renomeá-la como .env usando o seguinte comando:
 
-``bash
+```bash
 cp .env.example .env
+```
 
 ### Gerando a Chave de Aplicativo:
 
-``bash
+```bash
 php -r "echo base64_encode(random_bytes(32));"
-
+```
 
 Agora o ambiente Docker Laravel está configurado e pronto para desenvolvimento. 
 Abra o navegador e acesse http://localhost para visualizar a página inicial do Laravel.
