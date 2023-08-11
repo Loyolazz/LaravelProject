@@ -35,6 +35,10 @@ Com o projeto Laravel iniciado, instale as dependências:
 composer install
 ```
 
+```bash
+npx npm install
+```
+
 ### Configurando o Arquivo .env:
 O arquivo .env contém as configurações de ambiente para o seu projeto. Você pode criar uma cópia do arquivo de exemplo .env.example e renomeá-la como .env usando o seguinte comando:
 
