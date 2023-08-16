@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\Response;
 
 class StoreUpdateUserRequest extends FormRequest
 {
@@ -21,7 +25,7 @@ class StoreUpdateUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'name' => [
                 'required',
                 'min:3',
@@ -39,6 +43,24 @@ class StoreUpdateUserRequest extends FormRequest
                 'max:12',
             ]
         ];
+
+        if ($this->method() === 'PATCH') {
+            $rules['email'] = [
+                'required',
+                'email',
+                'max:255',
+                "unique:users,email,{$this->id},id",
+            ];
+
+            $rules['password'] = [
+                'nullable',
+                'min:6',
+                'max:12',
+            ];
+        }
+
+
+        return $rules;
     }
 
     /**
@@ -60,5 +82,10 @@ class StoreUpdateUserRequest extends FormRequest
             'password.min' => 'A senha deve ter pelo menos :min caracteres.',
             'password.max' => 'A senha não pode ter mais do que :max caracteres.',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
     }
 }

@@ -9,5 +9,7 @@ Route::get('/', function(){
     ]);
 });
 
+Route::patch('/users/CBMSE/edit/{id}', [UserController::class, 'update']);
+Route::get('/users/CBMSE{id}', [UserController::class, 'show']);
 Route::get('/users', [UserController::class, 'index']);
 Route::post('/users', [UserController::class, 'store']);
