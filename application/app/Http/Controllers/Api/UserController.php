@@ -7,7 +7,7 @@ use App\Http\Requests\StoreUpdateUserRequest;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use App\Models\User;
-use GuzzleHttp\Psr7\Request as Psr7Request;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
@@ -48,5 +48,20 @@ class UserController extends Controller
         $user->update($data);
 
         return new UserResource($user);
+    }
+
+    public function destroy(string $id) {
+        $user = User::find($id);
+    
+        if (!$user) {
+            return response()->json([
+                'message' => 'Usuário não encontrado.'
+            ], Response::HTTP_NOT_FOUND);
+        }
+    
+        $user->delete();
+        return response()->json([
+            'message' => 'Usuário deletado com sucesso.'
+        ], Response::HTTP_OK);
     }
 }

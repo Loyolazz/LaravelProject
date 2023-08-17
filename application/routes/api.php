@@ -9,7 +9,10 @@ Route::get('/', function(){
     ]);
 });
 
-Route::patch('/users/CBMSE/edit/{id}', [UserController::class, 'update']);
-Route::get('/users/CBMSE{id}', [UserController::class, 'show']);
-Route::get('/users', [UserController::class, 'index']);
-Route::post('/users', [UserController::class, 'store']);
+Route::prefix('/users')->group(function () {
+    Route::get('/', [UserController::class, 'index']);
+    Route::post('/', [UserController::class, 'store']);
+    Route::get('/CBMSE{id}', [UserController::class, 'show']);
+    Route::patch('/edit/{id}', [UserController::class, 'update']);
+    Route::delete('/editDel/{id}', [UserController::class, 'destroy']);
+});
