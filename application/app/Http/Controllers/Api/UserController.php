@@ -5,15 +5,20 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUserRequest;
 use App\Http\Resources\UserResource;
-use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Http\Response;
 
 class UserController extends Controller
-{
+{   
+    protected User $repository;
+
+    public function __construct(User $repository) {
+        $this->repository = $repository;
+    }
+
     public function index()
     {
-        $users=User::all();
+        $users=$this->repository->paginate();
 
         return UserResource::collection($users);
     }
@@ -22,12 +27,12 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $data['password'] = bcrypt($request -> password);
-        $user = User::create($data);
+        $user = $this->repository->create($data);
 
         return new UserResource($user);
     }
     public function show(string $id){
-        $user = User::find($id);
+        $user = $this->repository->find($id);
 
 
         if(!$user) {
@@ -42,7 +47,7 @@ class UserController extends Controller
     public function update(string $id, StoreUpdateUserRequest $request) {
         $data  = $request->all();
         $data['password'] = bcrypt($request->password);
-        $user = User::findOrFail($id);
+        $user = $this->repository->findOrFail($id);
         
       
         $user->update($data);
@@ -51,7 +56,7 @@ class UserController extends Controller
     }
 
     public function destroy(string $id) {
-        $user = User::find($id);
+        $user = $this->repository->find($id);
     
         if (!$user) {
             return response()->json([
