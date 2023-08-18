@@ -1,0 +1,1 @@
+alert('Abriu o script');
