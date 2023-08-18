@@ -57,3 +57,7 @@ Abra o navegador e acesse http://localhost para visualizar a página inicial do 
 
 
 Para mais detalhes sobre o projeto Laravel e suas configurações, consulte a documentação oficial do Laravel em https://laravel.com/docs.
+
+```bash -Exercicios-
+https://www.youtube.com/watch?v=5PYFb3lF74g&list=PLXik_5Br-zO9xlSwhhEDUGF81M5mgMUFQ&index=89
+```
