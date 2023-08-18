@@ -24,23 +24,14 @@ class StoreUpdateMovieRequest extends FormRequest
         $imageBaseUrl = 'https://flxt.tmsimg.com/assets/';
 
         $rules = [
-            'name' => ['required', 'max:255'],
+            'name' => ['required', 'max:255', 'min:3'],
             'genre' => ['required', 'max:255'],
-            'codMovieIMDb' => ['required', 'max:255'],
+            'codMovieIMDb' => ['required', 'max:255', 'unique:true'],
             'rottenTomatoesMeter' => ['required', 'max:255'],
             'Director' => ['required', 'max:255'],
-            'Poster' => ['required', 'url', 'max:255', "starts_with:{$imageBaseUrl}"] // Exemplo: validar se é uma URL válida
+            'Poster' => ['url', 'max:255', "starts_with:{$imageBaseUrl}"] // Exemplo: validar se é uma URL válida
             // Adicione outras regras de validação para campos adicionais aqui
         ];
-
-        // Se for uma ação de atualização (PATCH), exclua a regra de campo único para codMovieIMDb
-        if ($this->isMethod('patch')) {
-            $rules['Poster'] = ['nullable', 'url', 'max:255', "starts_with:{$imageBaseUrl}"];
-            $rules['codMovieIMDb'] = ['required', 'max:255'];
-        } else {
-            $rules['codMovieIMDb'][] = 'unique:movies';
-        }
-
         return $rules;
     }
 }

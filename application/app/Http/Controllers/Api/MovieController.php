@@ -34,14 +34,11 @@ class MovieController extends Controller
         return new MovieResource($movie);
 
     }
-
-    public function store(StoreUpdateMovieRequest $request)
-    {
-        $data = $this->repository->find($request);
-        dd($data); // Verifique os dados aqui
-        
-        $movie = $this->repository->create($data);
-        return new MovieResource($movie);
+    
+    public function store()
+    {   
+        $movie = new Movie;
+        dd($movie);
     }
-
+    
 }
