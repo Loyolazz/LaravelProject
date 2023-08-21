@@ -12,6 +12,15 @@ Certifique-se de ter as permissões necessárias para editar a pasta do projeto.
 sudo chown -R "seu-usuario":"seu-usuario" application
 ```
 
+
+2 . ***Criação do Projeto:***
+
+Ciração do Projeto em Laravel:
+
+```bash
+composer-create-project --prefer-dist laravel/laravel "Nome do Projeto"
+```
+
 ## Configuração do Laravel
 
 ### Subir o Ambiente Docker:
@@ -57,3 +66,8 @@ Abra o navegador e acesse http://localhost para visualizar a página inicial do 
 
 
 Para mais detalhes sobre o projeto Laravel e suas configurações, consulte a documentação oficial do Laravel em https://laravel.com/docs.
+
+### Exercicios:
+```bash 
+https://www.youtube.com/watch?v=5PYFb3lF74g&list=PLXik_5Br-zO9xlSwhhEDUGF81M5mgMUFQ&index=89
+```
