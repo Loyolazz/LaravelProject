@@ -18,7 +18,7 @@ sudo chown -R "seu-usuario":"seu-usuario" application
 Ciração do Projeto em Laravel:
 
 ```bash
-composer-create-project --prefer-dist laravel/laravel "Nome do Projeto"
+composer create-project --prefer-dist laravel/laravel "Nome do Projeto"
 ```
 
 ## Configuração do Laravel
