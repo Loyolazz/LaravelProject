@@ -13,7 +13,7 @@ sudo chown -R "seu-usuario":"seu-usuario" application
 ```
 
 
-2 . ***Criação do Projeto:***
+2. ***Criação do Projeto:***
 
 Ciração do Projeto em Laravel:
 
